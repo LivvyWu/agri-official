@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel='stylesheet' href='/stylesheets/custom.css'/>
+
+</head>
+
+<body id="apis" data-spy="scroll" data-target="#myScrollspy">
+
+
+<div class="container-fluid">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        <nav class="navbar apiNav pad45" id="myScrollspy">
+            <a class="navbar-brand" href="/">
+                <img src="images/icons/shield.svg" width="40" height="40" class="d-inline-block" alt="">
+                AGRO
+            </a>
+            <button class="navbar-toggler hidden-xs-up" type="button" data-toggle="collapse"
+                    data-target="#exCollapsingNavbar" aria-controls="exCollapsingNavbar" aria-expanded="false"
+                    aria-label="Toggle navigation"></button>
+            <ul class="nav" id="sidebar">
+                <% menus.forEach(function(menu, index1){ %>
+                <li class="nav-item"><a class="nav-link active" href="#content<%= index1 %>"><%= menu.item %></a>
+                    <ul class="nav submenu">
+                        <% menu.subitems.forEach(function(subitem, index2){ %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#content<%= index1 %>-<%= index2 %>"><%= subitem.name %></a>
+                        </li>
+                        <ul>
+                            <% subitem.sub.forEach(function(subs, index3){ %>
+                            <li><a class="nav-link"
+                                   href="#content<%= index1 %>-<%= index2 %>-<%= index3 %>"><%= subs.name %></a>
+                            </li>
+                            <% }); %>
+                        </ul>
+                        <% }); %>
+                    </ul>
+                </li>
+                <% }); %>
+                <li class="">
+                    <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
+                       aria-controls="collapseExample">
+                        其他API服務
+                    </a>
+                </li>
+            </ul>
+            <!--</div>-->
+            <div class="collapse" id="collapseExample">
+                <ul class="menu-footer">
+                    <% apiRouters.forEach(function (apiRouter, i) { %>
+
+                    <li class="nav-item"><a class="nav-link" href="#"><%= apiRouter.name %></a>
+                    </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="page-wrapper">
+        <div class="page-content scroll-box">
+            <div class="dark-box"></div>
+            <% menus.forEach(function(menu, index1){ %>
+
+            <div class="content" id="content<%= index1 %>">
+
+                <h1><%= menu.item %></h1>
+                <p><%= menu.desc %></p>
+
+                <% menu.subitems.forEach(function(subitem, index2){ %>
+                <h2 id="content<%= index1 %>-<%= index2 %>"><%= subitem.name %></h2>
+                <div class="row mid">
+                    <div class="col-ms-12 col-md-6 midOuter">
+                        <% subitem.sub.forEach(function(subs, index3){ %>
+                        <div class="midInner">
+                            <h3 id="content<%= index1 %>-<%= index2 %>-<%= index3 %>"><%= subs.name %></h3>
+                            <% if (index3 == 0) { %>
+
+                            <p><%= subs.content %></p>
+
+                            <% if (subs.http) { %>
+                                <code class="url"><%= subs.http %></code>
+                            <% } %>
+
+
+                            <% } %>
+
+                            <% if (subs.dummy) { %>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>標籤</th>
+                                    <th>必填</th>
+                                    <th>說明</th>
+                                    <th>格式 / 範例</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% if (subs.table == 'req') { %>
+                                <% reqtb.forEach(function (tr) { %>
+                                <tr>
+                                    <td><%= tr.tag %></td>
+                                    <td><%= tr.required %></td>
+                                    <td><%= tr.desc %></td>
+                                    <td><%= tr.format %></td>
+                                </tr>
+                                <% }) %>
+                                <% } %>
+
+                                <% if (subs.table == 'res') { %>
+                                <% restb.forEach(function (tr) { %>
+                                <tr>
+                                    <td><%= tr.tag %></td>
+                                    <td><%= tr.required %></td>
+                                    <td><%= tr.desc %></td>
+                                    <td><%= tr.format %></td>
+                                </tr>
+                                <% }) %>
+                                <% } %>
+
+                                </tbody>
+                            </table>
+                            <% } %>
+                        </div>
+                        <% }); %>
+                    </div>
+
+                    <div class="col-ms-12 col-md-6 rightOuter">
+                        <div class="rightInner">
+                            <h3>請求範例 (Example Request)</h3>
+                            <pre><code>
+    <span>{</span>
+        <span>device_id : “183948633”,</span>
+        <span>d: {</span>
+        <span>type : “A01”,</span>
+        <span>value : “37.5”,</span>
+        <span>valid_time_start : “1380654000”,</span>
+        <span>valid_time_end : “1380657600”</span>
+    }
+
+                                </code></pre>
+                            <h3>回應範例 (Example Response)</h3>
+                            <pre><code>
+    <span>{</span>
+        <span>device_id : “183948633”,</span>
+        <span>d: {</span>
+        <span>type : “A01”,</span>
+        <span>value : “37.5”,</span>
+        <span>valid_time_start : “1380654000”,</span>
+        <span>valid_time_end : “1380657600”</span>
+    <span>}</span>
+
+                                </code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <% }); %>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+<!-- container -->
+<script src="/plugin/jquery/jquery-1.11.3.min.js"></script>
+<script src="/bootstrap/bootstrap.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        // --------------------------------------------------------
+        //  Smooth Scrolling
+        // --------------------------------------------------------
+        $("#sidebar li a[href^='#']").on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 1000);
+        });
+
+        $('#nav-button').on('click', function () {
+            $(this).toggleClass('open');
+            $('.tocify-wrapper').toggleClass('open');
+        });
+    });
+
+</script>
+</body>
+</html>
