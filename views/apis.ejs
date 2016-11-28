@@ -19,13 +19,12 @@
     <div class="tocify-wrapper">
         <nav class="navbar apiNav pad45" id="myScrollspy">
             <a class="navbar-brand" href="/">
-                <img src="images/icons/shield.svg" width="40" height="40" class="d-inline-block" alt="">
-                AGRO
+                <img class="img-fluid" src="images/agri.png" width="100" alt="">
             </a>
             <button class="navbar-toggler hidden-xs-up" type="button" data-toggle="collapse"
                     data-target="#exCollapsingNavbar" aria-controls="exCollapsingNavbar" aria-expanded="false"
                     aria-label="Toggle navigation"></button>
-            <ul class="nav" id="sidebar">
+            <ul class="nav pad25" id="sidebar">
                 <% menus.forEach(function(menu, index1){ %>
                 <li class="nav-item"><a class="nav-link active" href="#content<%= index1 %>"><%= menu.item %></a>
                     <ul class="nav submenu">
