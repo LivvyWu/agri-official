@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <% include head.ejs %>
+</head>
+
+<body id="login">
+<div class="container-fluid authorization_container">
+    <row class="frow lex-items-xs-center">
+        <div class="col-md-3 hidden-sm-down"></div>
+        <div class="col-xs-12 col-md-6 vertical_center text-xs-center">
+            <a href="/"><img class="img-fluid" width="150px" src="images/agri.png"/></a>
+            <h2>忘記帳號/密碼？</h2>
+            <br>
+             <form role="form">
+                <div class="form-group col-xs-9">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="電子郵件 *">
+                </div>
+                <button type="submit" class="col-xs-3 btn btn-primary btn-embossed btn-md" style="margin: 0; padding:auto 0">重設密碼</button>
+            </form>
+            <div class="spacer"></div>
+        </div>
+        <div class="col-md-3 hidden-sm-down"></div>
+        <!-- /.col-->
+    </row>
+    <div id="login-bottom" class="col-xs-12">
+        <ul>
+            <!-- trigger modal -->
+            <!--<li class="first"><a href="#" data-toggle="modal" data-target="#myModal">Privacy Policy</a></li>-->
+            <!--<li><a href="＃">Contact</a></li>-->
+            <li class="last"><a href="/">© 財團法人資訊工業策進會</a></li>
+        </ul>
+    </div>
+</div>
+<!-- /.container -->
+<% include modal.ejs %>
+<% include includejs.ejs %>
+</body>
+</html>
