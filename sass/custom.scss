@@ -77,6 +77,10 @@ ul {
 .light {
   fill: rgb(239, 206, 74);
 }
+
+.house-light {
+  fill: #368CD6;
+}
 #index {
   header {
     padding-top: 200px;
@@ -118,10 +122,6 @@ ul {
     img {
       padding: 30px 30px;
     }
-    #idea {
-      color: #111;
-    }
-
   }
 
   $facebook: #3b5998;

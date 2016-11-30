@@ -195,7 +195,7 @@
                     <defs/>
                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <g id="openapi">
-                            <polygon id="Shape" fill="#368CD6"
+                            <polygon id="house" fill="#777"
                                      points="481 380.60533 0 380.60533 0 126.316887 240.5 23.011954 481 126.316887"/>
                             <polygon id="Shape" fill="#9E5A23"
                                      points="33.1720898 380.60533 447.82791 380.60533 447.82791 348.818712 33.1720898 348.818712"/>
@@ -504,7 +504,6 @@
     </div>
 </section>
 <% include footer.ejs %>
-
 <% include includejs.ejs %>
 <% include modal.ejs %>
 <script src="/plugin/parallax/parallax.js"></script>
@@ -521,11 +520,14 @@
     ], {duration: 4000, fade: 1000});
 
     var myidea = document.querySelector('#Group1');
+    var house = document.querySelector('#house');
     console.log(myidea);
     $('#openapi').on('mouseover', function () {
         myidea.setAttribute("class", "light");
+        house.setAttribute("class", "house-light");
     }).on('mouseout', function () {
         myidea.setAttribute("class", "");
+        house.setAttribute("class", "");
     });
 
 
